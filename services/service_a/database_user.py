@@ -60,7 +60,7 @@ def list_users() -> List[Dict[str, Optional[str]]]:
 def delete_user(id: int):
     with get_conn() as conn:
         cursor = conn.execute(
-            "DELETE * FROM users WHERE (? = users.id)", (id)
+            "DELETE * FROM users WHERE users.id = ?", (id)
         )
         cursor.commit()
         print(f"La persona con id {id} fue eliminada")
